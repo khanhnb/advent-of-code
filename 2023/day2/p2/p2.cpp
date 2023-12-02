@@ -6,20 +6,20 @@ typedef long long ll;
 
 int power(string b) {
     int F[3] = {1, 1, 1};
-    vector<string> s;
+    string prev = "";
     int start = 0;
     int size;
     b += ' ';
     while ((size = b.find(' ', start)) != string::npos) {
         string w = b.substr(start, size - start);
         if (w.find("red") != string::npos) {
-            F[0] = max(F[0], stoi(s.back()));
+            F[0] = max(F[0], stoi(prev));
         } else if (w.find("green") != string::npos) {
-            F[1] = max(F[1], stoi(s.back()));
+            F[1] = max(F[1], stoi(prev));
         } else if (w.find("blue") != string::npos) {
-            F[2] = max(F[2], stoi(s.back()));
+            F[2] = max(F[2], stoi(prev));
         } else
-            s.push_back(w);
+            prev= w;
         start = size + 1;
     }
     return F[0] * F[1] * F[2];
