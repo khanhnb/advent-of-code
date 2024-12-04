@@ -1,7 +1,7 @@
 use std::io::{self, BufRead};
 use std::{
     error::Error,
-    fs::{self, File},
+    fs::File,
     path::Path,
 };
 
@@ -30,6 +30,7 @@ pub fn run(cfg: Config) -> Result<(), Box<dyn Error>> {
     if let Ok(lines) = read_lines(cfg.input_path) {
         match cfg.day.as_str() {
             "1" => days::day1::run(lines),
+            "2" => days::day2::run(lines),
             _ => println!("Day not implemented"),
         }
     }

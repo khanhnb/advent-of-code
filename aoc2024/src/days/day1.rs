@@ -1,7 +1,7 @@
 use std::{
     collections::HashMap,
     fs::File,
-    io::{BufReader, Lines},
+    io::{BufReader, Lines}, time::Instant,
 };
 
 pub fn run(lines: Lines<BufReader<File>>) {
@@ -15,8 +15,14 @@ pub fn run(lines: Lines<BufReader<File>>) {
         f_locations.push(f_location);
         s_locations.push(s_location);
     }
+    let now = Instant::now();
     println!("part 1: {}", part1(&mut f_locations, &mut s_locations));
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
+    let now = Instant::now();
     println!("part 2: {}", part2(&mut f_locations, &mut s_locations));
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
 }
 
 fn part1(f: &mut Vec<u32>, s: &mut Vec<u32>) -> u32 {
