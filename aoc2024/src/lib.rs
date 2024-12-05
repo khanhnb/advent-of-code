@@ -1,9 +1,5 @@
 use std::io::{self, BufRead};
-use std::{
-    error::Error,
-    fs::File,
-    path::Path,
-};
+use std::{error::Error, fs::File, path::Path};
 
 mod days;
 
@@ -27,12 +23,15 @@ impl Config {
     }
 }
 pub fn run(cfg: Config) -> Result<(), Box<dyn Error>> {
-    if let Ok(lines) = read_lines(cfg.input_path) {
+    if let Ok(lines) = read_lines(&cfg.input_path) {
         match cfg.day.as_str() {
             "1" => days::day1::run(lines),
             "2" => days::day2::run(lines),
+            "3" => days::day3::run(lines),
             _ => println!("Day not implemented"),
         }
+    } else {
+        println!("file: {} not found", &cfg.input_path);
     }
     Ok(())
 }
