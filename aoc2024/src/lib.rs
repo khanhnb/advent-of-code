@@ -28,6 +28,7 @@ pub fn run(cfg: Config) -> Result<(), Box<dyn Error>> {
             "1" => days::day1::run(lines),
             "2" => days::day2::run(lines),
             "3" => days::day3::run(lines),
+            "4" => days::day4::run(lines),
             _ => println!("Day not implemented"),
         }
     } else {
